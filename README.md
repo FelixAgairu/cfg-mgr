@@ -1,3 +1,4 @@
+**[English](/README.md)** [简体中文](README-zh_cn.md)
 # Config Manager
 A serializer using GSON and load/save config files.
 
