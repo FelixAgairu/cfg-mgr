@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "cfg-mgr",
+	"id": "config-manager",
 	"version": "${version}",
-	"name": "cfg-mgr",
+	"name": "config-manager",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "MIT",
-	"icon": "assets/cfg-mgr/icon.png",
+	"icon": "assets/config-manager/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": []
