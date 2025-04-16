@@ -2,7 +2,7 @@
 # 设置管理器
 基于GSON的配置文件序列化器。
 
-## Use
+## 使用
 - Gradle
 ```groovy
 repositories {
