@@ -3,8 +3,27 @@
 基于GSON的配置文件序列化器。
 
 ## Use
-- 在`Gradle`中使用`modImplementation`
-- 在`IDE`同步变更
+- Gradle
+```groovy
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+dependencies {
+    modImplementation "maven.modrinth:config-manager:${project.configmanager_version}"
+}
+```
+- Java
 ```java
 import dev.felixagairu.configmanager.ConfigManager
 
