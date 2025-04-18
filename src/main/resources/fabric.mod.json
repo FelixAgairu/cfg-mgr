@@ -3,20 +3,17 @@
 	"id": "config-manager",
 	"version": "${version}",
 	"name": "config-manager",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A small json configuration serializer using gson.",
 	"authors": [
-		"Me!"
+		"Github::FelixAgairu"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/FelixAgairu/config-manager"
 	},
 	"license": "MIT",
 	"icon": "assets/config-manager/icon.png",
 	"environment": "*",
-	"entrypoints": {
-		"main": []
-	},
+	"entrypoints": {"main": []},
 	"mixins": [],
 	"depends": {
 		"fabricloader": ">=0.16.13",
@@ -24,7 +21,5 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
-	"suggests": {
-		"another-mod": "*"
-	}
+	"suggests": {}
 }

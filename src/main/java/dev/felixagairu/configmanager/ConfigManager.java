@@ -15,7 +15,7 @@ public class ConfigManager {
     public ConfigManager(String configFileName, String configDefault) {
         // Load file dir from given "configFileName"
         // 从"configFileName"获取配置文件路径
-        CONFIG_FILE  = new File(FabricLoader.getInstance().getConfigDir().toFile(), configFileName);
+        CONFIG_FILE = new File(FabricLoader.getInstance().getConfigDir().toFile(), configFileName);
         // Set the default config content
         // 设置默认配置文件内容
         DEFAULT_CONFIGS = JsonParser.parseString(configDefault).getAsJsonObject();
@@ -28,20 +28,24 @@ public class ConfigManager {
             return GSON.fromJson(reader, JsonObject.class);
         } catch (IOException e) {
             System.err.println("Failed to load config: " + e.getMessage());
-            return saveConfig(DEFAULT_CONFIGS).getAsJsonObject(); // Return default config
+            return DEFAULT_CONFIGS;
         }
     }
 
-    public JsonObject saveConfig(JsonObject config) {
+    public boolean saveConfig(JsonObject config) {
         // Save config file
         // 保存配置文件
         try (Writer writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(config, writer);
-            return config;
+            return true;
         } catch (IOException e) {
             System.err.println("Failed to save config: " + e.getMessage());
-            return new JsonObject();
+            return false;
         }
+    }
+
+    public boolean resetConfig() {
+        return saveConfig(DEFAULT_CONFIGS);
     }
     /*
     public static void registerShutdownHandler() {

@@ -76,3 +76,25 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+// Add version number auto increment
+// 增加版本号自动增加
+tasks.register('incrementVersionTask') {
+	doLast {
+		def propertiesFile = file("gradle.properties")
+		def properties = new Properties()
+		properties.load(propertiesFile.newReader())
+		def oldVersion = mod_version
+		def parts = oldVersion.split('\\.')
+		parts[2] = (parts[2] as int) + 1
+		def newVersion = parts.join('.')
+		properties.setProperty("mod_version", "$newVersion")
+		properties.store(propertiesFile.newWriter(), null)
+		println "Version incremented from $oldVersion to $newVersion"
+	}
+}
+
+// Increase version number after build
+// 项目构建完成后增加版本号
+tasks.named('build').configure {
+	finalizedBy(tasks.named('incrementVersionTask'))
+}
