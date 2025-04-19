@@ -25,9 +25,15 @@ public class ConfigManager {
         // Read config file
         // 读取配置文件
         try (Reader reader = new FileReader(CONFIG_FILE)) {
-            return GSON.fromJson(reader, JsonObject.class);
+            JsonObject jO = GSON.fromJson(reader, JsonObject.class);
+            if (jO != null) {
+                return jO;
+            } else {
+                System.err.println("[config-manager] Failed to load config: Might empty file!");
+                return DEFAULT_CONFIGS;
+            }
         } catch (IOException e) {
-            System.err.println("Failed to load config: " + e.getMessage());
+            System.err.println("[config-manager] Failed to load config: " + e.getMessage());
             return DEFAULT_CONFIGS;
         }
     }
@@ -39,7 +45,7 @@ public class ConfigManager {
             GSON.toJson(config, writer);
             return true;
         } catch (IOException e) {
-            System.err.println("Failed to save config: " + e.getMessage());
+            System.err.println("[config-manager] Failed to save config: " + e.getMessage());
             return false;
         }
     }
